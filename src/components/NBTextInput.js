@@ -29,10 +29,19 @@ const NBTextInput = ({
   autoFocus,
   returnKeyType,
   autoCapitalize,
+  fixedLabel,
+  inlineLabel,
+  floatingLabel,
+  stackedLabel,
   meta: { touched, error },
 }) => (
   <View style={styles.container}>
-    <Item floatingLabel error={!!(touched && error)}>
+    <Item
+      fixedLabel={fixedLabel}
+      inlineLabel={inlineLabel}
+      floatingLabel={floatingLabel}
+      stackedLabel={stackedLabel}
+      error={!!(touched && error)}>
       <Label>
         {error ? `${label} *` : label}
       </Label>
