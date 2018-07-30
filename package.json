@@ -1,0 +1,42 @@
+{
+  "name": "nb-redux-form",
+  "version": "0.0.1",
+  "description": "component redux form with native base",
+  "main": "index.js",
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "prop-types": "*"
+  },
+  "dependencies": {
+    "moment": "^2.22.2",
+    "native-base": "^2.7.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
+    "babel-preset-airbnb": "^2.5.3",
+    "babel-preset-react-native": "^4.0.0",
+    "eslint": "^5.2.0",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.10.0",
+    "eslint-watch": "^4.0.2",
+    "react": "^16.4.1",
+    "react-native": "^0.56.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ios": "cd example && npm install && react-native run-ios",
+    "android": "cd example && npm install && react-native run-android"
+  },
+  "keywords": [
+    "react-native",
+    "redux",
+    "redux-form",
+    "native-base"
+  ],
+  "author": "isgi",
+  "license": "ISC"
+}

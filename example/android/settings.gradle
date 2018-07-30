@@ -1,0 +1,3 @@
+rootProject.name = 'ExampleReduxForm'
+
+include ':app'
