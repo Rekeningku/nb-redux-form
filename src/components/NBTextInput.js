@@ -33,6 +33,7 @@ const NBTextInput = ({
   inlineLabel,
   floatingLabel,
   stackedLabel,
+  regular,
   meta: { touched, error },
 }) => (
   <View style={styles.container}>
@@ -41,6 +42,7 @@ const NBTextInput = ({
       inlineLabel={inlineLabel}
       floatingLabel={floatingLabel}
       stackedLabel={stackedLabel}
+      regular={regular}
       error={!!(touched && error)}>
       <Label>
         {error ? `${label} *` : label}
