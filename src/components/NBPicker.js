@@ -20,16 +20,19 @@ let NBPicker = class NBPicker extends Component {
         this.setState({
             selected: value
         })
+
+        this.props.input.onChange(value)
     }
 
     render() {
+        const { input } = this.props
         return (
             <View>
                 <Picker
-                    {...this.props}
+                    {...input}
                     mode={this.props.mode}
-                    selectedValue={this.state.selected}
-                    onValueChange={(value)=> this.onValueChange(value)}
+                    selectedValue={input.value}
+                    onValueChange={(value) => this.onValueChange(value)}
                 >
                     {this.props.children}
                 </Picker>
@@ -40,8 +43,8 @@ let NBPicker = class NBPicker extends Component {
 
 NBPicker.Item = class Item extends Component {
     render() {
-        return(
-            <Picker.Item label={this.props.label} value={this.props.value}/>
+        return (
+            <Picker.Item label={this.props.label} value={this.props.value} />
         )
     }
 }
