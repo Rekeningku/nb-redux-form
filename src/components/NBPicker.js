@@ -25,13 +25,13 @@ let NBPicker = class NBPicker extends Component {
     }
 
     render() {
-        const { input, textStyle, style, iosIcon } = this.props
+        const { input, textStyle, style, iosIcon, selectedValue } = this.props
         return (
             <View>
                 <Picker
                     {...input}
                     mode={this.props.mode}
-                    selectedValue={input.value}
+                    selectedValue={input.value || selectedValue}
                     textStyle={textStyle}
                     style={style}
                     iosIcon={iosIcon}
@@ -58,7 +58,8 @@ NBPicker.propTypes = {
     mode: PropTypes.string.isRequired,
     selectedValue: PropTypes.string,
     style: PropTypes.object,
-    textStyle: PropTypes.object
+    textStyle: PropTypes.object,
+    selectedValue: PropTypes.string
 };
 
 NBPicker.defaultProps = {
