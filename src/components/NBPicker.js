@@ -10,17 +10,32 @@ import PropTypes from 'prop-types';
 let NBPicker = class NBPicker extends Component {
     constructor(props) {
         super(props)
+
+        this.state = {
+            selected: this.props.selectedValue
+        }
+    }
+
+    onValueChange(value) {
+        this.setState({
+            selected: value
+        })
+
+        this.props.input.onChange(value)
     }
 
     render() {
-        const { input } = this.props
+        const { input, textStyle, style, iosIcon } = this.props
         return (
             <View>
                 <Picker
                     {...input}
                     mode={this.props.mode}
-                    selectedValue={input.value.toString()}
-                    onValueChange={(value) => input.onChange(value)}
+                    selectedValue={input.value}
+                    textStyle={textStyle}
+                    style={style}
+                    iosIcon={iosIcon}
+                    onValueChange={(value) => this.onValueChange(value)}
                 >
                     {this.props.children}
                 </Picker>
@@ -42,6 +57,8 @@ NBPicker.propTypes = {
     meta: PropTypes.object.isRequired,
     mode: PropTypes.string.isRequired,
     selectedValue: PropTypes.string,
+    style: PropTypes.object,
+    textStyle: PropTypes.object
 };
 
 NBPicker.defaultProps = {
