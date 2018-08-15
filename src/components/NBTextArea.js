@@ -26,6 +26,7 @@ const NBTextArea = ({
   label,
   secureTextEntry,
   keyboardType,
+  stackedLabel,
   meta: { touched, error },
 }) => (
   <View style={styles.container}>
@@ -38,6 +39,7 @@ const NBTextArea = ({
         secureTextEntry={secureTextEntry}
         keyboardType={keyboardType}
         multiline
+        stackedLabel={stackedLabel}
         numberOfLines={4}
       />
     </Item>
@@ -59,6 +61,7 @@ NBTextArea.propTypes = {
   returnKeyType: PropTypes.string,
   autoCapitalize: PropTypes.string,
   meta: PropTypes.object.isRequired,
+  stackedLabel: PropTypes.bool
 };
 
 NBTextArea.defaultProps = {
