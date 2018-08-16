@@ -35,19 +35,18 @@ class NBDatePicker extends Component {
   render() {
     const {
       input, label, meta,
-      stackedLabel, floatingLabel,
       defaultDate, minimumDate, maximumDate,
       locale, timeZoneOffsetInMinutes, modalTransparent,
       animationType, androidMode, placeHolderText,
-      textStyle, placeHolderTextStyle
+      textStyle, placeHolderTextStyle, iconComponent
     } = this.props;
     const { touched, error } = meta;
     return (
       <View style={styles.container}>
-        <Item floatingLabel={floatingLabel} stackedLabel={stackedLabel} onPress={this.handlePress} error={!!(touched && error)}>
-          <Label>
-            {error ? `${label} *` : label}
-          </Label>
+        <Label>
+          {error ? `${label} *` : label}
+        </Label>
+        <Item onPress={this.handlePress} error={!!(touched && error)}>
           <DatePicker
             {...input}
             defaultDate={defaultDate}
@@ -62,10 +61,9 @@ class NBDatePicker extends Component {
             textStyle={textStyle}
             placeHolderTextStyle={placeHolderTextStyle}
             onDateChange={input.onChange}
-            floatingLabel={floatingLabel}
           />
         </Item>
-        <Icon style={styles.icon} active name="calendar" />
+        {this.iconComponent}
         <Text note>
           {touched && error ? error : ''}
         </Text>
