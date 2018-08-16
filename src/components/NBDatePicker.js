@@ -44,7 +44,7 @@ class NBDatePicker extends Component {
     const { touched, error } = meta;
     return (
       <View style={styles.container}>
-        <Item floatingLabel={floatingLabel} onPress={this.handlePress} error={!!(touched && error)}>
+        <Item floatingLabel={floatingLabel} stackedLabel={stackedLabel} onPress={this.handlePress} error={!!(touched && error)}>
           <Label>
             {error ? `${label} *` : label}
           </Label>
@@ -63,7 +63,6 @@ class NBDatePicker extends Component {
             placeHolderTextStyle={placeHolderTextStyle}
             onDateChange={input.onChange}
             floatingLabel={floatingLabel}
-            stackedLabel={stackedLabel}
           />
         </Item>
         <Icon style={styles.icon} active name="calendar" />
