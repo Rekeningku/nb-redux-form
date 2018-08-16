@@ -63,7 +63,7 @@ class NBDatePicker extends Component {
             onDateChange={input.onChange}
           />
         </Item>
-        {this.iconComponent}
+        {iconComponent}
         <Text note>
           {touched && error ? error : ''}
         </Text>
