@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   formMessage: {
-    marginLeft: 15,
+    marginLeft: 0,
     color: '#d9534e',
   },
   labelHelper: {
@@ -40,6 +40,8 @@ const NBTextInput = ({
   prefix,
   placeholder,
   maxLength,
+  leftComponents,
+  rightComponents,
   meta: { touched, error },
 }) => (
     <View style={styles.container}>
@@ -51,6 +53,7 @@ const NBTextInput = ({
         stackedLabel={stackedLabel}
         disabled
         error={!!(touched && error)}>
+        {leftComponents}
         <Label style={
           prefix &&
           { paddingBottom: 3 }
@@ -83,6 +86,7 @@ const NBTextInput = ({
             disabled ? { color: 'grey', style } : style
           }
         />
+        {rightComponents}
       </Item>
       <Text style={styles.formMessage} note>
         {touched && error ? error : ''}
