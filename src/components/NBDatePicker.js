@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
 class NBDatePicker extends Component {
   render() {
     const {
-      input, label, meta,
+      input, label, meta, disabled, regular, style,
       defaultDate, minimumDate, maximumDate,
       locale, timeZoneOffsetInMinutes, modalTransparent,
       animationType, androidMode, placeHolderText,
@@ -43,12 +43,41 @@ class NBDatePicker extends Component {
     const { touched, error } = meta;
     return (
       <View style={styles.container}>
-        <Label>
-          {error ? `${label} *` : label}
+      { regular && (
+        <Label 
+          style={{
+              position: null,
+              top: null,
+              left: null,
+              right: null,
+              paddingBottom: 5,
+              alignSelf: "flex-start",
+              fontSize: 13,
+          }}
+        >
+          {
+              label ?
+                error ?
+                  `${label}`
+                  : label
+                : null
+          }
         </Label>
-        <Item onPress={this.handlePress} error={!!(touched && error)}>
+      )}
+        <Label style={{ fontSize: 13 }}>
+          {!regular ? error ? `${label} *` : label:null}
+        </Label>
+        <Item
+         regular={regular}
+         onPress={this.handlePress} 
+         error={!!(touched && error)}
+         style={{
+          backgroundColor : regular ? ('#f8fbfc'):('#fff'),
+         }}
+        >
           <DatePicker
             {...input}
+            disabled={disabled}
             defaultDate={defaultDate}
             minimumDate={minimumDate}
             maximumDate={maximumDate}
@@ -58,7 +87,9 @@ class NBDatePicker extends Component {
             animationType={animationType}
             androidMode={androidMode}
             placeHolderText={placeHolderText}
-            textStyle={textStyle}
+            textStyle={
+              disabled ? { color: 'grey', style } : textStyle
+            }
             placeHolderTextStyle={placeHolderTextStyle}
             onDateChange={input.onChange}
           />
