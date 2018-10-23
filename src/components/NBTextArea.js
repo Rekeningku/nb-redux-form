@@ -28,19 +28,65 @@ const NBTextArea = ({
   keyboardType,
   stackedLabel,
   floatingLabel,
+  regular,
+  prefix,
+  style,
+  disabled,
   meta: { touched, error },
 }) => (
   <View style={styles.container}>
-      <Item floatingLabel={floatingLabel} stackedLabel={stackedLabel} error={!!(touched && error)}>
+    { regular && (
+        <Label
+          style={{
+              position: null,
+              top: null,
+              left: null,
+              right: null,
+              paddingBottom: 5,
+              alignSelf: "flex-start",
+              fontSize: 13,
+          }}
+        >
+          {
+            prefix ?
+              prefix
+              : label ?
+                error ?
+                  `${label}`
+                  : label
+                : null
+          }
+        </Label>
+      ) }
+      <Item 
+        regular={regular}
+        floatingLabel={floatingLabel} 
+        stackedLabel={stackedLabel} 
+        error={!!(touched && error)}
+        disabled={disabled}
+        style={{
+          backgroundColor: '#f8fbfc', 
+          // borderColor: '#D0DCF1', 
+          marginLeft: 0
+        }}
+      >
       <Label>
-        {error ? `${label} *` : label}
+        {
+          !regular ?
+          error ? `${label}` 
+          : label : null
+        }
       </Label>
       <Input
         {...input}
+        disabled={ disabled || false }
         secureTextEntry={secureTextEntry}
         keyboardType={keyboardType}
         multiline
         numberOfLines={4}
+        style={
+          disabled ? { color: 'grey', style } : style
+        }
       />
     </Item>
     <Text style={styles.formMessage} note>
