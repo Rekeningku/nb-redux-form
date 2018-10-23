@@ -32,6 +32,7 @@ const NBTextInput = ({
   autoFocus,
   returnKeyType,
   autoCapitalize,
+  regular,
   fixedLabel,
   inlineLabel,
   floatingLabel,
@@ -46,7 +47,37 @@ const NBTextInput = ({
 }) => (
     <View style={styles.container}>
       <Text style={styles.labelHelper}>{prefix && (label)}</Text>
+      { regular && (
+        <Label 
+          style={{
+              position: null,
+              top: null,
+              left: null,
+              right: null,
+              paddingBottom: 5,
+              alignSelf: "flex-start",
+              fontSize: 13,
+          }}
+        >
+          {
+            prefix ?
+              prefix
+              : label ?
+                error ?
+                  `${label}`
+                  : label
+                : null
+          }
+        </Label>
+      )}
       <Item
+        style={{
+          backgroundColor: regular ? ('#f8fbfc'):('#fff'), 
+          // borderColor: '#D0DCF1', 
+          marginLeft: 0
+        }}
+        placeholderLabel={true}
+        regular={regular}
         fixedLabel={fixedLabel}
         inlineLabel={inlineLabel}
         floatingLabel={floatingLabel}
@@ -54,22 +85,26 @@ const NBTextInput = ({
         disabled
         error={!!(touched && error)}>
         {leftComponents}
-        <Label style={
+        <Label style={[
           prefix &&
-          { paddingBottom: 3 }
+          { paddingBottom: 3 },
+        ]
         }>
           {
+            !regular ?
             prefix ?
               prefix
               : label ?
                 error ?
-                  `${label} *`
+                  `${label}`
                   : label
                 : null
+            : null
           }
         </Label>
-        <Input
+        <Input placeholderTextColor='#bbb'  style={{ paddingLeft: 0, marginLeft: 0, }}
           {...input}
+          placeholderTextColor='#bbb'
           value={input.value.toString()}
           disabled={disabled || false}
           getRef={c => (typeof (getRef) === 'function' ? getRef(c) : null)}
@@ -86,7 +121,7 @@ const NBTextInput = ({
             disabled ? { color: 'grey', style } : style
           }
         />
-        {rightComponents}
+          {rightComponents}
       </Item>
       <Text style={styles.formMessage} note>
         {touched && error ? error : ''}
