@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import {
-    Picker
+    Picker,
+    Item,
+    Label,
 } from 'native-base';
 import {
-    View
+    View, StyleSheet
 } from 'react-native';
 import PropTypes from 'prop-types';
+
+const styles = StyleSheet.create({
+    container: {
+      marginTop: 10,
+    },
+  });
 
 let NBPicker = class NBPicker extends Component {
     constructor(props) {
@@ -25,20 +33,51 @@ let NBPicker = class NBPicker extends Component {
     }
 
     render() {
-        const { input, textStyle, style, iosIcon, selectedValue } = this.props
+        const { 
+            input, 
+            label,
+            textStyle, 
+            style, 
+            iosIcon, 
+            selectedValue,
+            enabled,
+            regular,
+        } = this.props
         return (
-            <View>
-                <Picker
-                    {...input}
-                    mode={this.props.mode}
-                    selectedValue={input.value || selectedValue}
-                    textStyle={textStyle}
-                    style={style}
-                    iosIcon={iosIcon}
-                    onValueChange={(value) => this.onValueChange(value)}
+            <View style={[styles.container, {style}]}>
+                <Label
+                style={{
+                    position: null,
+                    top: null,
+                    left: null,
+                    right: null,
+                    paddingBottom: 5,
+                    alignSelf: "flex-start",
+                    fontSize: 13,
+                }}
                 >
-                    {this.props.children}
-                </Picker>
+                {label ? label : null}
+                </Label>
+                <Item
+                    regular={regular}
+                    style={[{
+                        backgroundColor : regular ? ('#f8fbfc'): !enabled ? ('#f0f0f0'):('#fff'),
+                        marginLeft: 0
+                    }, style]}
+                    
+                >
+                    <Picker
+                        enabled={enabled}
+                        {...input}
+                        mode={this.props.mode}
+                        selectedValue={input.value || selectedValue}
+                        textStyle={textStyle}
+                        iosIcon={iosIcon}
+                        onValueChange={(value) => this.onValueChange(value)}
+                    >
+                        {this.props.children}
+                    </Picker>
+                </Item>
             </View>
         );
     }
