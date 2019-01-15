@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
   formMessage: {
     marginLeft: 0,
     color: '#d9534e',
+    fontSize: 12
   },
   labelHelper: {
     color: "#575757"
@@ -33,6 +34,7 @@ const NBTextInput = ({
   returnKeyType,
   autoCapitalize,
   regular,
+  noBorder,
   fixedLabel,
   inlineLabel,
   floatingLabel,
@@ -50,13 +52,13 @@ const NBTextInput = ({
       { regular && (
         <Label 
           style={{
-              position: null,
-              top: null,
-              left: null,
-              right: null,
-              paddingBottom: 5,
-              alignSelf: "flex-start",
-              fontSize: 13,
+            position: null,
+            top: null,
+            left: null,
+            right: null,
+            paddingBottom: 5,
+            alignSelf: "flex-start",
+            fontSize: 13,
           }}
         >
           {
@@ -71,13 +73,18 @@ const NBTextInput = ({
         </Label>
       )}
       <Item
-        style={{
-          backgroundColor: regular ? ('#f8fbfc'):('#fff'), 
-          // borderColor: '#D0DCF1', 
-          marginLeft: 0
-        }}
+        style={[
+          {
+            backgroundColor: regular ? ('#f8fbfc'):('#fff'), 
+            // borderColor: '#D0DCF1', 
+            borderRadius: 3,
+            marginLeft: 0,
+            borderColor: touched && error ? '#d9534e' : noBorder ? 'transparent':'#D0DCF1'
+          }, style
+        ]}
         placeholderLabel={true}
         regular={regular}
+        noBorder={noBorder}
         fixedLabel={fixedLabel}
         inlineLabel={inlineLabel}
         floatingLabel={floatingLabel}
@@ -102,9 +109,9 @@ const NBTextInput = ({
             : null
           }
         </Label>
-        <Input placeholderTextColor='#bbb'  style={{ paddingLeft: 0, marginLeft: 0, }}
+        <Input placeholderTextColor='#aaa'  style={{ paddingLeft: 0, marginLeft: 0, }}
           {...input}
-          placeholderTextColor='#bbb'
+          placeholderTextColor='#aaa'
           value={input.value.toString()}
           disabled={disabled || false}
           getRef={c => (typeof (getRef) === 'function' ? getRef(c) : null)}
