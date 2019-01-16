@@ -3,6 +3,7 @@ import {
     Picker,
     Item,
     Label,
+    Text
 } from 'native-base';
 import {
     View, StyleSheet
@@ -13,6 +14,11 @@ const styles = StyleSheet.create({
     container: {
       marginTop: 10,
     },
+    formMessage: {
+        marginLeft: 0,
+        color: '#d9534e',
+        fontSize: 12
+      },
   });
 
 let NBPicker = class NBPicker extends Component {
@@ -42,6 +48,9 @@ let NBPicker = class NBPicker extends Component {
             selectedValue,
             enabled,
             regular,
+            noBorder,
+            placeholder,
+            meta: { touched, error },
         } = this.props
         return (
             <View style={[styles.container, {style}]}>
@@ -62,7 +71,9 @@ let NBPicker = class NBPicker extends Component {
                     regular={regular}
                     style={[{
                         backgroundColor : regular ? ('#f8fbfc'): !enabled ? ('#f0f0f0'):('#fff'),
-                        marginLeft: 0
+                        marginLeft: 0,
+                        // borderColor: '#D0DCF1', 
+                        borderColor: touched && error ? '#d9534e' : noBorder ? 'transparent':'#D0DCF1'
                     }, style]}
                     
                 >
@@ -70,14 +81,18 @@ let NBPicker = class NBPicker extends Component {
                         enabled={enabled}
                         {...input}
                         mode={this.props.mode}
-                        selectedValue={input.value || selectedValue}
+                        selectedValue={input.value ? input.value : selectedValue}
                         textStyle={textStyle}
                         iosIcon={iosIcon}
+                        placeholder={placeholder}
                         onValueChange={(value) => this.onValueChange(value)}
                     >
                         {this.props.children}
                     </Picker>
                 </Item>
+                <Text style={styles.formMessage} note>
+                   {touched && error ? error : ''}
+                </Text>
             </View>
         );
     }
