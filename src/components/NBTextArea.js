@@ -32,6 +32,7 @@ const NBTextArea = ({
   prefix,
   style,
   disabled,
+  placeholder,
   meta: { touched, error },
 }) => (
   <View style={styles.container}>
@@ -79,6 +80,8 @@ const NBTextArea = ({
       </Label>
       <Input
         {...input}
+        placeholder={placeholder}
+        placeholderTextColor='#aaa'
         disabled={ disabled || false }
         secureTextEntry={secureTextEntry}
         keyboardType={keyboardType}
