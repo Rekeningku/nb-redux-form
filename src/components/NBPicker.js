@@ -9,6 +9,8 @@ import {
     View, StyleSheet
 } from 'react-native';
 import PropTypes from 'prop-types';
+import store from '../../../../app/store';
+import { change } from 'redux-form';
 
 const styles = StyleSheet.create({
     container: {
@@ -31,6 +33,9 @@ let NBPicker = class NBPicker extends Component {
     }
 
     onValueChange(value) {
+        if(this.props.resetOnChange){
+            store.dispatch(change('accountVerification', 'noIdentitas', ''))
+        }
         this.setState({
             selected: value
         })
