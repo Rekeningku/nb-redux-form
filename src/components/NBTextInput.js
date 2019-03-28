@@ -75,7 +75,10 @@ const NBTextInput = ({
       <Item
         style={[
           {
-            backgroundColor: regular ? ('#f8fbfc'):('#fff'), 
+            backgroundColor: disabled ? 
+              regular ? ('#e9ecef') : ('#e9ecef') 
+            : regular ? ('#f8fbfc'):('#fff'), 
+
             // borderColor: '#D0DCF1', 
             borderRadius: 3,
             marginLeft: 0,

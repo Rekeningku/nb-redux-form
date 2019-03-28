@@ -71,9 +71,9 @@ class NBDatePicker extends Component {
          regular={regular}
          onPress={this.handlePress} 
          error={!!(touched && error)}
-         style={{
-          backgroundColor : regular ? ('#f8fbfc'):('#fff'),
-         }}
+         style={
+          disabled ? { backgroundColor : regular ? ('#e9ecef'):('#e9ecef'),} : { backgroundColor : regular ? ('#f8fbfc'):('#fff'),}
+         }
         >
           <DatePicker
             {...input}

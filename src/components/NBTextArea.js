@@ -66,7 +66,7 @@ const NBTextArea = ({
         error={!!(touched && error)}
         disabled={disabled}
         style={{
-          backgroundColor: '#f8fbfc', 
+          backgroundColor: disabled ? '#e9ecef':'#f8fbfc', 
           // borderColor: '#D0DCF1', 
           marginLeft: 0
         }}
