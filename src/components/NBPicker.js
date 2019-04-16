@@ -49,12 +49,13 @@ let NBPicker = class NBPicker extends Component {
             label,
             textStyle, 
             style, 
-            iosIcon, 
             selectedValue,
             enabled,
             regular,
             noBorder,
             placeholder,
+            iosIcon,
+            pickerStyle,
             meta: { touched, error },
         } = this.props
         return (
@@ -72,23 +73,32 @@ let NBPicker = class NBPicker extends Component {
                 >
                 {label ? label : null}
                 </Label>
-                <Item
+                <View
                     regular={regular}
                     style={[{
                         backgroundColor : enabled ? 
-                                         regular ? ('#f8fbfc'): !enabled ? ('#f0f0f0'):('#fff')
-                                         :regular ? ('#E9ECEF'): !enabled ? ('#f0f0f0'):('#fff'),
+                            regular ? ('#f8fbfc'): !enabled ? ('#f0f0f0'):('#fff')
+                            :regular ? ('#E9ECEF'): !enabled ? ('#f0f0f0'):('#fff'),
                         marginLeft: 0,
-                        // borderColor: '#D0DCF1', 
-                        borderColor: touched && error ? '#d9534e' : noBorder ? 'transparent':'#D0DCF1'
+                        borderColor: '#D0DCF1',
+                        width: '100%',
+                        borderColor: touched && error ? '#d9534e' : noBorder ? 'transparent':'#D0DCF1',
                     }, style]}
+                    // style={[{
+                    //     backgroundColor : enabled ? 
+                    //                      regular ? ('#f8fbfc'): !enabled ? ('#f0f0f0'):('#fff')
+                    //                      :regular ? ('#E9ECEF'): !enabled ? ('#f0f0f0'):('#fff'),
+                    //     marginLeft: 0,
+                    //     // borderColor: '#D0DCF1', 
+                    //     borderColor: touched && error ? '#d9534e' : noBorder ? 'transparent':'#D0DCF1'
+                    // }, style]}
                     
                 >
                     <Picker
                         enabled={enabled}
                         {...input}
                         mode={this.props.mode}
-                        style={!enabled ? {backgroundColor:'#E9ECEF'} : (null)}
+                        style={!enabled ? {backgroundColor:'#E9ECEF'} : (pickerStyle)}
                         selectedValue={input.value ? input.value : selectedValue}
                         textStyle={textStyle}
                         iosIcon={iosIcon}
@@ -97,7 +107,7 @@ let NBPicker = class NBPicker extends Component {
                     >
                         {this.props.children}
                     </Picker>
-                </Item>
+                </View>
                 <Text style={styles.formMessage} note>
                    {touched && error ? error : ''}
                 </Text>
