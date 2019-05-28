@@ -29,22 +29,22 @@ const NBSwitch = ({
   disabled,
   meta: { touched, error },
 }) => (
-  <View style={styles.container}>
-    <Item>
-      <Left>
-        <Label>
-          { error ? `${label} *` : label }
-        </Label>
-      </Left>
-      <Right>
-        <Switch disabled={disabled} value={!!value} onValueChange={() => onChange(!value)} />
-      </Right>
-    </Item>
-    <Text style={styles.formMessage} note>
-      {touched && error ? error : ''}
-    </Text>
-  </View>
-);
+    <View style={styles.container}>
+      <Item>
+        <Left>
+          <Label>
+            {error ? `${label} *` : label}
+          </Label>
+        </Left>
+        <Right>
+          <Switch disabled={disabled} value={!!value} onValueChange={() => onChange(!value)} />
+        </Right>
+      </Item>
+      <Text style={styles.formMessage} note>
+        {touched && error ? error : ''}
+      </Text>
+    </View>
+  );
 
 NBSwitch.propTypes = {
   input: PropTypes.object.isRequired,

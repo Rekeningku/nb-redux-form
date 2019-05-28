@@ -43,9 +43,9 @@ class NBDatePicker extends Component {
     const { touched, error } = meta;
     return (
       <View style={styles.container}>
-      { regular && (
-        <Label 
-          style={{
+        {regular && (
+          <Label
+            style={{
               position: null,
               top: null,
               left: null,
@@ -53,27 +53,27 @@ class NBDatePicker extends Component {
               paddingBottom: 5,
               alignSelf: "flex-start",
               fontSize: 13,
-          }}
-        >
-          {
+            }}
+          >
+            {
               label ?
                 error ?
                   `${label}`
                   : label
                 : null
-          }
-        </Label>
-      )}
-        <Label style={{ fontSize: 13 }}>
+            }
+          </Label>
+        )}
+        {/* <Label style={{ fontSize: 13 }}>
           {!regular ? error ? `${label} *` : label:null}
-        </Label>
+        </Label> */}
         <Item
-         regular={regular}
-         onPress={this.handlePress} 
-         error={!!(touched && error)}
-         style={
-          disabled ? { backgroundColor : regular ? ('#e9ecef'):('#e9ecef'),} : { backgroundColor : regular ? ('#f8fbfc'):('#fff'),}
-         }
+          regular={regular}
+          onPress={this.handlePress}
+          error={!!(touched && error)}
+          style={
+            disabled ? { backgroundColor: regular ? ('#e9ecef') : ('#e9ecef'), } : { backgroundColor: regular ? ('#f8fbfc') : ('#fff'), }
+          }
         >
           <DatePicker
             {...input}

@@ -48,9 +48,9 @@ const NBTextInput = ({
   meta: { touched, error },
 }) => (
     <View style={styles.container}>
-      <Text style={styles.labelHelper}>{prefix && (label)}</Text>
-      { regular && (
-        <Label 
+      {/* <Text style={styles.labelHelper}>{prefix && (label)}</Text> */}
+      {regular && (
+        <Label
           style={{
             position: null,
             top: null,
@@ -75,14 +75,14 @@ const NBTextInput = ({
       <Item
         style={[
           {
-            backgroundColor: disabled ? 
-              regular ? ('#e9ecef') : ('#e9ecef') 
-            : regular ? ('#f8fbfc'):('#fff'), 
+            backgroundColor: disabled ?
+              regular ? ('#e9ecef') : ('#e9ecef')
+              : regular ? ('#f8fbfc') : ('#fff'),
 
             // borderColor: '#D0DCF1', 
             borderRadius: 3,
             marginLeft: 0,
-            borderColor: touched && error ? '#d9534e' : noBorder ? 'transparent':'#D0DCF1'
+            borderColor: touched && error ? '#d9534e' : noBorder ? 'transparent' : '#D0DCF1'
           }, style
         ]}
         placeholderLabel={true}
@@ -102,17 +102,17 @@ const NBTextInput = ({
         }>
           {
             !regular ?
-            prefix ?
-              prefix
-              : label ?
-                error ?
-                  `${label}`
-                  : label
-                : null
-            : null
+              prefix ?
+                prefix
+                : label ?
+                  error ?
+                    `${label}`
+                    : label
+                  : null
+              : null
           }
         </Label>
-        <Input placeholderTextColor='#aaa'  style={{ paddingLeft: 0, marginLeft: 0, }}
+        <Input placeholderTextColor='#aaa' style={{ paddingLeft: 0, marginLeft: 0, }}
           {...input}
           placeholderTextColor='#aaa'
           value={input.value.toString()}
@@ -131,7 +131,7 @@ const NBTextInput = ({
             disabled ? { color: 'grey', style } : style
           }
         />
-          {rightComponents}
+        {rightComponents}
       </Item>
       <Text style={styles.formMessage} note>
         {touched && error ? error : ''}

@@ -14,14 +14,14 @@ import { change } from 'redux-form';
 
 const styles = StyleSheet.create({
     container: {
-      marginTop: 10,
+        marginTop: 10,
     },
     formMessage: {
         marginLeft: 0,
         color: '#d9534e',
         fontSize: 12
-      },
-  });
+    },
+});
 
 let NBPicker = class NBPicker extends Component {
     constructor(props) {
@@ -33,7 +33,7 @@ let NBPicker = class NBPicker extends Component {
     }
 
     onValueChange(value) {
-        if(this.props.resetOnChange){
+        if (this.props.resetOnChange) {
             store.dispatch(change('accountVerification', 'noIdentitas', ''))
         }
         this.setState({
@@ -44,11 +44,11 @@ let NBPicker = class NBPicker extends Component {
     }
 
     render() {
-        const { 
-            input, 
+        const {
+            input,
             label,
-            textStyle, 
-            style, 
+            textStyle,
+            style,
             selectedValue,
             enabled,
             regular,
@@ -59,46 +59,46 @@ let NBPicker = class NBPicker extends Component {
             meta: { touched, error },
         } = this.props
         return (
-            <View style={[styles.container, {style}]}>
+            <View style={[{ style }]}>
                 <Label
-                style={{
-                    position: null,
-                    top: null,
-                    left: null,
-                    right: null,
-                    paddingBottom: 5,
-                    alignSelf: "flex-start",
-                    fontSize: 13,
-                }}
+                    style={{
+                        position: null,
+                        top: null,
+                        left: null,
+                        right: null,
+                        paddingBottom: 5,
+                        alignSelf: "flex-start",
+                        fontSize: 13,
+                    }}
                 >
-                {label ? label : null}
+                    {label ? label : null}
                 </Label>
                 <View
                     regular={regular}
                     style={[{
-                        backgroundColor : enabled ? 
-                            regular ? ('#f8fbfc'): !enabled ? ('#f0f0f0'):('#fff')
-                            :regular ? ('#E9ECEF'): !enabled ? ('#f0f0f0'):('#fff'),
+                        backgroundColor: enabled ?
+                            regular ? ('#f8fbfc') : !enabled ? ('#f0f0f0') : ('#fff')
+                            : regular ? ('#E9ECEF') : !enabled ? ('#f0f0f0') : ('#fff'),
                         marginLeft: 0,
                         borderColor: '#D0DCF1',
                         width: '100%',
-                        borderColor: touched && error ? '#d9534e' : noBorder ? 'transparent':'#D0DCF1',
+                        borderColor: touched && error ? '#d9534e' : noBorder ? 'transparent' : '#D0DCF1',
                     }, style]}
-                    // style={[{
-                    //     backgroundColor : enabled ? 
-                    //                      regular ? ('#f8fbfc'): !enabled ? ('#f0f0f0'):('#fff')
-                    //                      :regular ? ('#E9ECEF'): !enabled ? ('#f0f0f0'):('#fff'),
-                    //     marginLeft: 0,
-                    //     // borderColor: '#D0DCF1', 
-                    //     borderColor: touched && error ? '#d9534e' : noBorder ? 'transparent':'#D0DCF1'
-                    // }, style]}
-                    
+                // style={[{
+                //     backgroundColor : enabled ? 
+                //                      regular ? ('#f8fbfc'): !enabled ? ('#f0f0f0'):('#fff')
+                //                      :regular ? ('#E9ECEF'): !enabled ? ('#f0f0f0'):('#fff'),
+                //     marginLeft: 0,
+                //     // borderColor: '#D0DCF1', 
+                //     borderColor: touched && error ? '#d9534e' : noBorder ? 'transparent':'#D0DCF1'
+                // }, style]}
+
                 >
                     <Picker
                         enabled={enabled}
                         {...input}
                         mode={this.props.mode}
-                        style={!enabled ? {backgroundColor:'#E9ECEF'} : (pickerStyle)}
+                        style={!enabled ? { backgroundColor: '#E9ECEF' } : (pickerStyle)}
                         selectedValue={input.value ? input.value : selectedValue}
                         textStyle={textStyle}
                         iosIcon={iosIcon}
@@ -108,9 +108,9 @@ let NBPicker = class NBPicker extends Component {
                         {this.props.children}
                     </Picker>
                 </View>
-                <Text style={styles.formMessage} note>
-                   {touched && error ? error : ''}
-                </Text>
+                {touched && error && (<Text style={styles.formMessage} note>
+                    {touched && error ? error : ''}
+                </Text>)}
             </View>
         );
     }

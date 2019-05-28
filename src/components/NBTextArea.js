@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   formMessage: {
-    marginLeft: 15,
+    // marginLeft: 15,
     color: '#d9534e',
   },
 });
@@ -35,17 +35,17 @@ const NBTextArea = ({
   placeholder,
   meta: { touched, error },
 }) => (
-  <View style={styles.container}>
-    { regular && (
+    <View style={styles.container}>
+      {regular && (
         <Label
           style={{
-              position: null,
-              top: null,
-              left: null,
-              right: null,
-              paddingBottom: 5,
-              alignSelf: "flex-start",
-              fontSize: 13,
+            position: null,
+            top: null,
+            left: null,
+            right: null,
+            paddingBottom: 5,
+            alignSelf: "flex-start",
+            fontSize: 13,
           }}
         >
           {
@@ -58,45 +58,45 @@ const NBTextArea = ({
                 : null
           }
         </Label>
-      ) }
-      <Item 
+      )}
+      <Item
         regular={regular}
-        floatingLabel={floatingLabel} 
-        stackedLabel={stackedLabel} 
+        floatingLabel={floatingLabel}
+        stackedLabel={stackedLabel}
         error={!!(touched && error)}
         disabled={disabled}
         style={{
-          backgroundColor: disabled ? '#e9ecef':'#f8fbfc', 
+          backgroundColor: disabled ? '#e9ecef' : '#f8fbfc',
           // borderColor: '#D0DCF1', 
           marginLeft: 0
         }}
       >
-      <Label>
-        {
-          !regular ?
-          error ? `${label}` 
-          : label : null
-        }
-      </Label>
-      <Input
-        {...input}
-        placeholder={placeholder}
-        placeholderTextColor='#aaa'
-        disabled={ disabled || false }
-        secureTextEntry={secureTextEntry}
-        keyboardType={keyboardType}
-        multiline
-        numberOfLines={4}
-        style={
-          disabled ? { color: 'grey', ...style } : style
-        }
-      />
-    </Item>
-    <Text style={styles.formMessage} note>
-      {touched && error ? error : ''}
-    </Text>
-  </View>
-);
+        <Label>
+          {
+            !regular ?
+              error ? `${label}`
+                : label : null
+          }
+        </Label>
+        <Input
+          {...input}
+          placeholder={placeholder}
+          placeholderTextColor='#aaa'
+          disabled={disabled || false}
+          secureTextEntry={secureTextEntry}
+          keyboardType={keyboardType}
+          multiline
+          numberOfLines={4}
+          style={
+            disabled ? { color: 'grey', ...style } : style
+          }
+        />
+      </Item>
+      <Text style={styles.formMessage} note>
+        {touched && error ? error : ''}
+      </Text>
+    </View>
+  );
 
 NBTextArea.propTypes = {
   input: PropTypes.object.isRequired,
