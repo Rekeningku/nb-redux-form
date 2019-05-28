@@ -42,7 +42,7 @@ class NBDatePicker extends Component {
     } = this.props;
     const { touched, error } = meta;
     return (
-      <View style={styles.container}>
+      <View>
         {regular && (
           <Label
             style={{
