@@ -78,8 +78,8 @@ let NBPicker = class NBPicker extends Component {
                     regular={regular}
                     style={[{
                         backgroundColor: enabled ?
-                            regular ? ('#f8fbfc') : !enabled ? ('#f0f0f0') : ('#fff')
-                            : regular ? ('#E9ECEF') : !enabled ? ('#f0f0f0') : ('#fff'),
+                            regular ? (pickerStyle.backgroundColor) : !enabled ? (pickerStyleDisabled.backgroundColor) : ('#fff')
+                            : regular ? (pickerStyle.backgroundColor) : !enabled ? (pickerStyleDisabled.backgroundColor) : ('#fff'),
                         marginLeft: 0,
                         borderColor: '#D0DCF1',
                         width: '100%',
@@ -99,7 +99,7 @@ let NBPicker = class NBPicker extends Component {
                         enabled={enabled}
                         {...input}
                         mode={this.props.mode}
-                        style={!enabled ? (pickerStyleDisabled) : (pickerStyle)}
+                        style={enabled ?  (pickerStyle) : (pickerStyleDisabled)}
                         selectedValue={input.value ? input.value : selectedValue}
                         textStyle={textStyle}
                         iosIcon={iosIcon}
