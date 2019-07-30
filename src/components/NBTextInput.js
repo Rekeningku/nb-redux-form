@@ -24,7 +24,10 @@ const styles = StyleSheet.create({
 
 const NBTextInput = ({
   input,
+  enabledStyle,
+  disabledStyle,
   label,
+  labelStyle,
   secureTextEntry,
   keyboardType,
   onSubmit,
@@ -51,7 +54,7 @@ const NBTextInput = ({
       {/* <Text style={styles.labelHelper}>{prefix && (label)}</Text> */}
       {regular && (
         <Label
-          style={{
+          style={[{
             position: null,
             top: null,
             left: null,
@@ -59,7 +62,10 @@ const NBTextInput = ({
             paddingBottom: 5,
             alignSelf: "flex-start",
             fontSize: 13,
-          }}
+            
+          }
+          ,labelStyle
+        ]}
         >
           {
             prefix ?
@@ -76,13 +82,13 @@ const NBTextInput = ({
         style={[
           {
             backgroundColor: disabled ?
-              regular ? ('#e9ecef') : ('#e9ecef')
-              : regular ? ('#f8fbfc') : ('#fff'),
+              regular ? ( disabledStyle ? disabledStyle.backgroundColor : '#e9ecef') : (disabledStyle ? disabledStyle.backgroundColor : '#e9ecef')
+              : regular ? (enabledStyle ? enabledStyle.backgroundColor :'#f8fbfc') : ('#fff'),
 
             // borderColor: '#D0DCF1', 
             borderRadius: 3,
             marginLeft: 0,
-            borderColor: touched && error ? '#d9534e' : noBorder ? 'transparent' : '#D0DCF1'
+            borderColor: touched && error ? '#d9534e' : noBorder ? 'transparent' : disabledStyle ? disabledStyle.borderColor : '#D0DCF1'
           }, style
         ]}
         placeholderLabel={true}
@@ -128,7 +134,7 @@ const NBTextInput = ({
           placeholder={placeholder}
           maxLength={maxLength}
           style={
-            disabled ? { color: 'grey', style } : style
+            disabled ? { color: disabledStyle ? disabledStyle.color : 'grey', style } : { color: enabledStyle ? enabledStyle.color : 'grey' , style}
           }
         />
         {rightComponents}
