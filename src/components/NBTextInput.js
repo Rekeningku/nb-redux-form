@@ -82,8 +82,8 @@ const NBTextInput = ({
         style={[
           {
             backgroundColor: disabled ?
-              regular ? ( disabledStyle ? disabledStyle.backgroundColor : '#e9ecef') : (disabledStyle ? disabledStyle.backgroundColor : '#e9ecef')
-              : regular ? (enabledStyle ? enabledStyle.backgroundColor :'#f8fbfc') : ('#fff'),
+              regular ? ( disabledStyle.backgroundColor) : ( disabledStyle.backgroundColor)
+              : regular ? ( enabledStyle.backgroundColor) : ('#fff'),
 
             // borderColor: '#D0DCF1', 
             borderRadius: 3,
@@ -134,7 +134,7 @@ const NBTextInput = ({
           placeholder={placeholder}
           maxLength={maxLength}
           style={
-            disabled ? { color: disabledStyle ? disabledStyle.color : 'grey', style } : { color: enabledStyle ? enabledStyle.color : 'grey' , style}
+            disabled ? { color: disabledStyle.color, style } : { color: enabledStyle.color, style}
           }
         />
         {rightComponents}
