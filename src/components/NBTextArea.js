@@ -69,11 +69,15 @@ const NBTextArea = ({
         stackedLabel={stackedLabel}
         error={!!(touched && error)}
         disabled={disabled}
-        style={{
-          backgroundColor: disabled ? disabledStyle.backgroundColor : enabledStyle.backgroundColor,
-          borderColor: enabledStyle.borderColor, 
-          marginLeft: 0
-        }}
+        style={[{
+          backgroundColor: disabled ?
+              regular ? ( disabledStyle.backgroundColor) : ( disabledStyle.backgroundColor)
+              : regular ? ( enabledStyle.backgroundColor) : ('#fff'),
+          borderRadius: 3,
+          marginLeft: 0,
+          borderColor:  disabledStyle.borderColor 
+        }, style
+      ]}
       >
         <Label>
           {
