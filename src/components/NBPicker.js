@@ -47,6 +47,7 @@ let NBPicker = class NBPicker extends Component {
         const {
             input,
             label,
+            labelStyle,
             textStyle,
             style,
             selectedValue,
@@ -62,7 +63,7 @@ let NBPicker = class NBPicker extends Component {
         return (
             <View style={[{ style }]}>
                 <Label
-                    style={{
+                    style={[{
                         position: null,
                         top: null,
                         left: null,
@@ -70,7 +71,8 @@ let NBPicker = class NBPicker extends Component {
                         paddingBottom: 5,
                         alignSelf: "flex-start",
                         fontSize: 13,
-                    }}
+                    }, labelStyle
+                ]}
                 >
                     {label ? label : null}
                 </Label>
