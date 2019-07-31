@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
 class NBDatePicker extends Component {
   render() {
     const {
-      input, label, meta, disabled, regular, style,
+      input, label,labelStyle, meta, disabled, regular, style,
       defaultDate, minimumDate, maximumDate,
       locale, timeZoneOffsetInMinutes, modalTransparent,
       animationType, androidMode, placeHolderText,
@@ -45,7 +45,7 @@ class NBDatePicker extends Component {
       <View>
         {regular && (
           <Label
-            style={{
+            style={[{
               position: null,
               top: null,
               left: null,
@@ -53,7 +53,8 @@ class NBDatePicker extends Component {
               paddingBottom: 5,
               alignSelf: "flex-start",
               fontSize: 13,
-            }}
+            }, labelStyle]
+          }
           >
             {
               label ?
