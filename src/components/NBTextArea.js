@@ -24,6 +24,9 @@ const styles = StyleSheet.create({
 const NBTextArea = ({
   input,
   label,
+  labelStyle,
+  disabledStyle,
+  enabledStyle,
   secureTextEntry,
   keyboardType,
   stackedLabel,
@@ -38,7 +41,7 @@ const NBTextArea = ({
     <View style={styles.container}>
       {regular && (
         <Label
-          style={{
+          style={[{
             position: null,
             top: null,
             left: null,
@@ -46,7 +49,8 @@ const NBTextArea = ({
             paddingBottom: 5,
             alignSelf: "flex-start",
             fontSize: 13,
-          }}
+          },labelStyle
+        ]}
         >
           {
             prefix ?
@@ -66,8 +70,8 @@ const NBTextArea = ({
         error={!!(touched && error)}
         disabled={disabled}
         style={{
-          backgroundColor: disabled ? '#e9ecef' : '#f8fbfc',
-          // borderColor: '#D0DCF1', 
+          backgroundColor: disabled ? disabledStyle.backgroundColor : enabledStyle.backgroundColor,
+          borderColor: enabledStyle.borderColor, 
           marginLeft: 0
         }}
       >
@@ -88,7 +92,7 @@ const NBTextArea = ({
           multiline
           numberOfLines={4}
           style={
-            disabled ? { color: 'grey', ...style } : style
+            disabled ? { color: 'grey', ...style } : [style, enabledStyle]
           }
         />
       </Item>
