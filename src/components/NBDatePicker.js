@@ -38,7 +38,8 @@ class NBDatePicker extends Component {
       defaultDate, minimumDate, maximumDate,
       locale, timeZoneOffsetInMinutes, modalTransparent,
       animationType, androidMode, placeHolderText,
-      textStyle, placeHolderTextStyle, iconComponent
+      textStyle, placeHolderTextStyle, iconComponent,
+      disabledStyle, enabledStyle
     } = this.props;
     const { touched, error } = meta;
     return (
@@ -53,8 +54,8 @@ class NBDatePicker extends Component {
               paddingBottom: 5,
               alignSelf: "flex-start",
               fontSize: 13,
-            }, labelStyle]
-          }
+            },labelStyle
+          ]}
           >
             {
               label ?
@@ -72,8 +73,13 @@ class NBDatePicker extends Component {
           regular={regular}
           onPress={this.handlePress}
           error={!!(touched && error)}
-          style={
-            disabled ? { backgroundColor: regular ? ('#e9ecef') : ('#e9ecef'), } : { backgroundColor: regular ? ('#f8fbfc') : ('#fff'), }
+          style={{
+            borderColor: disabledStyle.borderColor,
+            borderRadius:3,
+            backgroundColor : disabled ?
+              regular ? ( disabledStyle.backgroundColor) : ( disabledStyle.backgroundColor)
+              : regular ? ( enabledStyle.backgroundColor) : ('#fff'),
+            }
           }
         >
           <DatePicker
