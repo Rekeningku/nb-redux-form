@@ -96,7 +96,7 @@ const NBTextArea = ({
           multiline
           numberOfLines={4}
           style={
-            disabled ? { color: 'grey', ...style } : [style, enabledStyle]
+            disabled ? { color: disabledStyle.color,  } : {color: enabledStyle.color,}
           }
         />
       </Item>
