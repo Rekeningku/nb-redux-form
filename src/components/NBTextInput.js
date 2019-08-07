@@ -134,7 +134,7 @@ const NBTextInput = ({
           placeholder={placeholder}
           maxLength={maxLength}
           style={
-            disabled ? { color: disabledStyle.color,  } : {color: enabledStyle.color,}
+            disabled ? { color: disabledStyle.color,  } : {color: enabledStyle.color, textAlign: style.textAlign ? style.textAlign : 'left'}
           }
         />
         {rightComponents}
