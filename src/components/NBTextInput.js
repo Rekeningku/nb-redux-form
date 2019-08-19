@@ -48,6 +48,7 @@ const NBTextInput = ({
   maxLength,
   leftComponents,
   rightComponents,
+  caretHidden,
   meta: { touched, error },
 }) => (
     <View style={styles.container}>
@@ -120,6 +121,7 @@ const NBTextInput = ({
         </Label>
         <Input placeholderTextColor='#aaa' style={{ paddingLeft: 0, marginLeft: 0, }}
           {...input}
+          caretHidden={caretHidden ? caretHidden : false}
           placeholderTextColor='#aaa'
           value={input.value.toString()}
           disabled={disabled || false}
