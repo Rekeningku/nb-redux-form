@@ -89,6 +89,7 @@ class NBDatePicker extends Component {
             date={input.value}
             minDate={minimumDate}
             maxDate={maximumDate}
+            format="DD-MM-YYYY"
             locale={locale}
             timeZoneOffsetInMinutes={timeZoneOffsetInMinutes}
             modalTransparent={modalTransparent}
