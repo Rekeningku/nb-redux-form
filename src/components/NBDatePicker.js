@@ -4,9 +4,9 @@ import {
   Label,
   Item,
   Icon,
-  Input,
-  DatePicker
+  Input
 } from 'native-base';
+import DatePicker from 'react-native-datepicker'
 import {
   View,
   StyleSheet
@@ -39,9 +39,10 @@ class NBDatePicker extends Component {
       locale, timeZoneOffsetInMinutes, modalTransparent,
       animationType, androidMode, placeHolderText,
       textStyle, placeHolderTextStyle, iconComponent,
-      disabledStyle, enabledStyle
+      disabledStyle, enabledStyle, customStyles
     } = this.props;
     const { touched, error } = meta;
+    console.log('input ini', input)
     return (
       <View>
         {regular && (
@@ -67,7 +68,7 @@ class NBDatePicker extends Component {
           </Label>
         )}
         {/* <Label style={{ fontSize: 13 }}>
-          {!regular ? error ? `${label} *` : label:null}
+          {!regular ? error ? ${label} * : label:null}
         </Label> */}
         <Item
           regular={regular}
@@ -78,27 +79,32 @@ class NBDatePicker extends Component {
             borderRadius:3,
             backgroundColor : disabled ?
               regular ? ( disabledStyle.backgroundColor) : ( disabledStyle.backgroundColor)
-              : regular ? ( enabledStyle.backgroundColor) : ('#fff'),
+              : regular ? ( enabledStyle.backgroundColor) : ('red'),
             }
           }
         >
           <DatePicker
             {...input}
             disabled={disabled}
-            defaultDate={defaultDate}
-            minimumDate={minimumDate}
-            maximumDate={maximumDate}
+            date={input.value}
+            minDate={minimumDate}
+            maxDate={maximumDate}
             locale={locale}
             timeZoneOffsetInMinutes={timeZoneOffsetInMinutes}
             modalTransparent={modalTransparent}
             animationType={animationType}
             androidMode={androidMode}
             placeHolderText={placeHolderText}
+            confirmBtnText="Ok"
+            cancelBtnText="Cancel"
+            style={{width:'100%'}}
             textStyle={
               disabled ? { color: 'grey', style } : textStyle
             }
+            iconComponent={null}
             placeHolderTextStyle={placeHolderTextStyle}
             onDateChange={input.onChange}
+            customStyles={customStyles}
           />
         </Item>
         {iconComponent}
