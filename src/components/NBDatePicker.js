@@ -74,13 +74,14 @@ class NBDatePicker extends Component {
           regular={regular}
           onPress={this.handlePress}
           error={!!(touched && error)}
-          style={{
+          style={[{
             borderColor: disabledStyle.borderColor,
             borderRadius:3,
             backgroundColor : disabled ?
               regular ? ( disabledStyle.backgroundColor) : ( disabledStyle.backgroundColor)
               : regular ? ( enabledStyle.backgroundColor) : ('red'),
-            }
+            }, style
+          ]
           }
         >
           <DatePicker
@@ -89,13 +90,13 @@ class NBDatePicker extends Component {
             date={input.value}
             minDate={minimumDate}
             maxDate={maximumDate}
-            format="DD-MM-YYYY"
+            format="DD MMMM YYYY"
             locale={locale}
             timeZoneOffsetInMinutes={timeZoneOffsetInMinutes}
             modalTransparent={modalTransparent}
             animationType={animationType}
             androidMode={androidMode}
-            placeHolderText={placeHolderText}
+            placeholder={placeHolderText}
             confirmBtnText="Ok"
             cancelBtnText="Cancel"
             style={{width:'100%'}}
