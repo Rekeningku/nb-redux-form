@@ -39,7 +39,7 @@ class NBDatePicker extends Component {
       locale, timeZoneOffsetInMinutes, modalTransparent,
       animationType, androidMode, placeHolderText,
       textStyle, placeHolderTextStyle, iconComponent,
-      disabledStyle, enabledStyle, customStyles
+      disabledStyle, enabledStyle, customStyles, formatDate
     } = this.props;
     const { touched, error } = meta;
     console.log('input ini', input)
@@ -90,7 +90,7 @@ class NBDatePicker extends Component {
             date={input.value}
             minDate={minimumDate}
             maxDate={maximumDate}
-            format="DD MMMM YYYY"
+            format={formatDate || "DD-MM-YYYY"}
             locale={locale}
             timeZoneOffsetInMinutes={timeZoneOffsetInMinutes}
             modalTransparent={modalTransparent}
