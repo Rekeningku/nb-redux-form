@@ -48,6 +48,7 @@ const NBTextInput = ({
   maxLength,
   leftComponents,
   rightComponents,
+  rightOutterComponents,
   caretHidden,
   meta: { touched, error },
 }) => (
@@ -79,6 +80,8 @@ const NBTextInput = ({
           }
         </Label>
       )}
+      <View style={{flexDirection:'row', width:'100%'}}>
+
       <Item
         style={[
           {
@@ -87,6 +90,7 @@ const NBTextInput = ({
               : regular ? ( enabledStyle.backgroundColor) : ('#fff'),
 
             // borderColor: '#D0DCF1', 
+            width:'100%',
             borderRadius: 3,
             marginLeft: 0,
             borderColor: touched && error ? '#d9534e' : noBorder ? 'transparent' : disabledStyle ? disabledStyle.borderColor : '#D0DCF1'
@@ -141,6 +145,8 @@ const NBTextInput = ({
         />
         {rightComponents}
       </Item>
+          {rightOutterComponents}
+      </View>
       <Text style={styles.formMessage} note>
         {touched && error ? error : ''}
       </Text>
