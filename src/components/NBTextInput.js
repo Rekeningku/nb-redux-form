@@ -80,7 +80,7 @@ const NBTextInput = ({
           }
         </Label>
       )}
-      <View style={{flexDirection:'row', width:'100%'}}>
+      <View style={[{flexDirection:'row'}]}>
 
       <Item
         style={[
@@ -90,11 +90,12 @@ const NBTextInput = ({
               : regular ? ( enabledStyle.backgroundColor) : ('#fff'),
 
             // borderColor: '#D0DCF1', 
-            width:'100%',
+            // width:'100%',
             borderRadius: 3,
             marginLeft: 0,
             borderColor: touched && error ? '#d9534e' : noBorder ? 'transparent' : disabledStyle ? disabledStyle.borderColor : '#D0DCF1'
-          }, style
+          }, style ,
+          !style.width ? {flex:1} : null
         ]}
         placeholderLabel={true}
         regular={regular}
